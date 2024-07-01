@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "rbsg",
+	"version": "${version}",
+	"name": "rbsg",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/rbsg/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.lpsy.rbsg.Rbsg"
+		],
+		"fabric-datagen": [
+			"net.lpsy.rbsg.RbsgDataGenerator"
+		]
+	},
+	"mixins": [
+		"rbsg.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

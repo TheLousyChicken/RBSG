@@ -1,2 +1,2 @@
-# rbsg-1.21.x
+# rbsg
  Mod full of random stuff :)

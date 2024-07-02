@@ -1,0 +1,9 @@
+// 1.21	2024-07-01T20:02:20.569279	rbsg/Tags for minecraft:block
+c03c42ffa9857ecc14438ddf725f6e8b12929ba3 data\minecraft\tags\block\needs_diamond_tool.json
+c03c42ffa9857ecc14438ddf725f6e8b12929ba3 data\minecraft\tags\block\mineable\pickaxe.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\shovel.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_stone_tool.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\fabric\tags\block\needs_tool_level_4.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\axe.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\hoe.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_iron_tool.json

@@ -1,0 +1,9 @@
+{
+  "block.rbsg.ancient_artifact": "Ancient Artifact",
+  "block.rbsg.enderite_block": "Enderite Block",
+
+  "item.rbsg.enderite_scrap": "Enderite Scrap",
+  "item.rbsg.enderite_ingot": "Enderite Ingot",
+
+  "itemgroup.rbsg": "RBSG Mod"
+}

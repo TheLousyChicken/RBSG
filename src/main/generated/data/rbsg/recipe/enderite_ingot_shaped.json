@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "rbsg:enderite_scrap"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABB",
+    "BB "
+  ],
+  "result": {
+    "count": 1,
+    "id": "rbsg:enderite_ingot"
+  }
+}

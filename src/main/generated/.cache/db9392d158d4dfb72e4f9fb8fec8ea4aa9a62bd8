@@ -1,0 +1,9 @@
+// 1.21	2024-07-01T20:02:20.5767295	rbsg/Model Definitions
+ef87847d4d73b30f2b530c84e38525ea1643335c assets\rbsg\models\block\ancient_artifact.json
+1d0878e7b880b5bc3e521041bab9d9d54fbd0087 assets\rbsg\models\item\enderite_block.json
+b684b0865b7845d2968689d1c4e5052598190147 assets\rbsg\models\item\enderite_ingot.json
+b87ed8a665ef704be6b5c8f6b66a39746072bd3c assets\rbsg\models\item\enderite_scrap.json
+bfacb87212b3972b465f31d702bc5317e5db4ebc assets\rbsg\models\item\ancient_artifact.json
+127647efd77598641f88c76769176ece18495c48 assets\rbsg\blockstates\ancient_artifact.json
+5c0e4ce9b246ae029256b4a58f53aba8def8382e assets\rbsg\models\block\enderite_block.json
+a854acb410290a68d9f9c904297c40e5c7fcaca2 assets\rbsg\blockstates\enderite_block.json

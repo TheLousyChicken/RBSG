@@ -22,6 +22,9 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.ANCIENT_ARTIFACT);
                         entries.add(ModBlocks.ENDERITE_BLOCK);
+                        entries.add(ModBlocks.REFINER_BLOCK);
+
+
                     }).build());
 
     public static void registerItemGroups() {

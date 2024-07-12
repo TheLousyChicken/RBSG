@@ -3,6 +3,7 @@ package net.lpsy.rbsg;
 import net.fabricmc.api.ModInitializer;
 
 import net.lpsy.rbsg.block.ModBlocks;
+import net.lpsy.rbsg.block.entity.ModBlockEntities;
 import net.lpsy.rbsg.item.ModItemGroups;
 import net.lpsy.rbsg.item.ModItems;
 import org.slf4j.Logger;
@@ -18,5 +19,6 @@ public class RbsgMod implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 
 		ModBlocks.registerModBlocks();
+		ModBlockEntities.registerBlockEntities();
 	}
 }

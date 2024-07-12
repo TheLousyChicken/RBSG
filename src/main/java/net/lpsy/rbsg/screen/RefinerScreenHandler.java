@@ -37,9 +37,9 @@ public class RefinerScreenHandler extends ScreenHandler {
         addProperties(arrayPropertyDelegate);
     }
 
-    public RefinerScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf buf) {
+    public RefinerScreenHandler(int syncId, PlayerInventory playerInventory, Object buf) {
         this(syncId, playerInventory ,
-                playerInventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
+                playerInventory.player.getWorld().getBlockEntity(((PacketByteBuf) buf).readBlockPos()),
                 new ArrayPropertyDelegate(2));
     }
 

@@ -2,6 +2,7 @@ package net.lpsy.rbsg.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.lpsy.rbsg.RbsgMod;
+import net.lpsy.rbsg.block.custom.RefinerBlock;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
@@ -9,10 +10,10 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class RefinerScreen extends HandledScreen<RefinerScreenHandler> {
+public class RefinerScreen extends HandledScreen<RefinerBlockScreenHandler> {
     private static final Identifier TEXTURE = Identifier.of(RbsgMod.MOD_ID, "textures/gui/refiner_block_gui.png");
 
-    public RefinerScreen(RefinerScreenHandler handler, PlayerInventory inventory, Text title) {
+    public RefinerScreen(RefinerBlockScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 

@@ -2,20 +2,21 @@ package net.lpsy.rbsg.block.entity;
 
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
-import net.lpsy.rbsg.block.ModBlocks;
+import net.lpsy.rbsg.block.custom.RefinerBlockRegister;
 import net.lpsy.rbsg.item.ModItems;
-import net.lpsy.rbsg.screen.RefinerScreenHandler;
+import net.lpsy.rbsg.screen.RefinerBlockScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtHelper;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
@@ -26,9 +27,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.sql.Ref;
-
-public class RefinerBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
+public class RefinerBlockEntity extends BlockEntity implements ImplementedInventory, ExtendedScreenHandlerFactory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
@@ -39,7 +38,7 @@ public class RefinerBlockEntity extends BlockEntity implements ExtendedScreenHan
     private int maxProgress = 72;
 
     public RefinerBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.REFINER_BLOCK_ENTITY, pos, state);
+        super(RefinerBlockRegister.REFINER_BLOCK_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
@@ -68,7 +67,7 @@ public class RefinerBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     @Override
     public Text getDisplayName() {
-        return null;
+        return Text.literal("Refiner");
     }
 
     @Override
@@ -79,7 +78,13 @@ public class RefinerBlockEntity extends BlockEntity implements ExtendedScreenHan
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new RefinerScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+        return new RefinerBlockScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
     }
 
     @Override
@@ -152,6 +157,8 @@ public class RefinerBlockEntity extends BlockEntity implements ExtendedScreenHan
 
         return hasInput && canInsertAmountIntoOutputSlot(result) && canInsetItemIntoOutputSlot(result.getItem());
     }
+
+    public static int PROPERTY_DELEGATE_SIZE = 2;
 
     private boolean canInsetItemIntoOutputSlot(Item item) {
         return this.getStack(OUTPUT_SLOT).getItem() == item || this.getStack(OUTPUT_SLOT).isEmpty();

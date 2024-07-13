@@ -1,7 +1,6 @@
 package net.lpsy.rbsg.block;
 
 import net.lpsy.rbsg.RbsgMod;
-import net.lpsy.rbsg.block.custom.RefinerBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -20,8 +19,8 @@ public class ModBlocks {
             new ExperienceDroppingBlock(UniformIntProvider.create(3,7), AbstractBlock.Settings.copy(Blocks.ANCIENT_DEBRIS).strength(30.0F, 1200.0F)));
 
     // custom blocks
-    public static final Block REFINER_BLOCK = registerBlock("refiner_block",
-            new RefinerBlock(AbstractBlock.Settings.copy(Blocks.BLAST_FURNACE).nonOpaque()));
+    //public static final Block REFINER_BLOCK = registerBlock("refiner_block",
+    //        new RefinerBlock(AbstractBlock.Settings.copy(Blocks.BLAST_FURNACE).nonOpaque()));
 
     public static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

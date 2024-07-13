@@ -3,6 +3,7 @@ package net.lpsy.rbsg.item;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.lpsy.rbsg.RbsgMod;
 import net.lpsy.rbsg.block.ModBlocks;
+import net.lpsy.rbsg.block.custom.RefinerBlockRegister;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -22,7 +23,7 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.ANCIENT_ARTIFACT);
                         entries.add(ModBlocks.ENDERITE_BLOCK);
-                        entries.add(ModBlocks.REFINER_BLOCK);
+                        entries.add(RefinerBlockRegister.REFINER_BLOCK);
 
 
                     }).build());

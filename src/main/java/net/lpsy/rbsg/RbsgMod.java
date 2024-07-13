@@ -3,6 +3,7 @@ package net.lpsy.rbsg;
 import net.fabricmc.api.ModInitializer;
 
 import net.lpsy.rbsg.block.ModBlocks;
+import net.lpsy.rbsg.block.custom.RefinerBlockRegister;
 import net.lpsy.rbsg.block.entity.ModBlockEntities;
 import net.lpsy.rbsg.item.ModItemGroups;
 import net.lpsy.rbsg.item.ModItems;
@@ -20,5 +21,7 @@ public class RbsgMod implements ModInitializer {
 
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
+
+		RefinerBlockRegister.onInitialize();
 	}
 }

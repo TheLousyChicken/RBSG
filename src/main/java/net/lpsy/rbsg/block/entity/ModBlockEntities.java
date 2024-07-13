@@ -9,10 +9,10 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlockEntities {
-    public static final BlockEntityType<RefinerBlockEntity> REFINER_BLOCK_ENTITY =
-            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(RbsgMod.MOD_ID, "refinery_be"),
-                    FabricBlockEntityTypeBuilder.create(RefinerBlockEntity::new,
-                            ModBlocks.REFINER_BLOCK).build());
+//    public static final BlockEntityType<RefinerBlockEntity> REFINER_BLOCK_ENTITY =
+//            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(RbsgMod.MOD_ID, "refinery_be"),
+//                    FabricBlockEntityTypeBuilder.create(RefinerBlockEntity::new,
+//                            ModBlocks.REFINER_BLOCK).build());
 
     public static void registerBlockEntities(){
         RbsgMod.LOGGER.info("registering block entities for " + RbsgMod.MOD_ID);

@@ -1,6 +1,7 @@
 package net.lpsy.rbsg.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.lpsy.rbsg.block.entity.ModBlockEntities;
 import net.lpsy.rbsg.block.entity.RefinerBlockEntity;
 import net.minecraft.block.*;
@@ -11,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -28,20 +30,18 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class RefinerBlock extends BlockWithEntity implements BlockEntityProvider {
+public class RefinerBlock extends AbstractFurnaceBlock {
 
     public static final MapCodec<RefinerBlock> CODEC = createCodec(RefinerBlock::new);
 
     private static final VoxelShape SHAPE = Block.createCuboidShape(0,0,0, 16, 14, 16);
-    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
-    public static final BooleanProperty LIT = Properties.LIT;
 
     public RefinerBlock(Settings settings) {
         super(settings);
     }
 
     @Override
-    protected MapCodec<? extends BlockWithEntity> getCodec() {
+    protected MapCodec<RefinerBlock> getCodec() {
         return CODEC;
     }
 
@@ -52,18 +52,19 @@ public class RefinerBlock extends BlockWithEntity implements BlockEntityProvider
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-            if (world.isClient) {
-                return ActionResult.SUCCESS;
+//            if (world.isClient) {
+//                return ActionResult.SUCCESS;
+//            }
+//            player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
+//            return ActionResult.CONSUME;
+        if (!world.isClient){
+            NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
+            if(screenHandlerFactory != null){
+                player.openHandledScreen(screenHandlerFactory);
             }
-            player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
-            return ActionResult.CONSUME;
+        }
+        return ActionResult.SUCCESS;
     }
-
-//    @Nullable
-//    @Override
-//    public BlockState getPlacementState(ItemPlacementContext ctx) {
-//        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
-//    }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
@@ -87,11 +88,9 @@ public class RefinerBlock extends BlockWithEntity implements BlockEntityProvider
     }
 
     @Nullable
-    @Override
+    @SuppressWarnings("unchecked")
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        //return validateTicker(type, RefinerBlockRegister.REFINER_BLOCK_ENTITY, RefinerBlockEntity::tick);
-        return validateTicker(type, RefinerBlockRegister.REFINER_BLOCK_ENTITY,
-                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
+        return RefinerBlock.validateTicker(world, type, RefinerBlockRegister.REFINER_BLOCK_ENTITY);
     }
 
     protected void openScreen(World world, BlockPos pos, PlayerEntity player) {
@@ -115,20 +114,4 @@ public class RefinerBlock extends BlockWithEntity implements BlockEntityProvider
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
     }
-
-//    @Override
-//    public BlockState rotate(BlockState state, BlockRotation rotation) {
-//        return (BlockState)state.with(FACING, rotation.rotate(state.get(FACING)));
-//    }
-//
-//    @Override
-//    public BlockState mirror(BlockState state, BlockMirror mirror) {
-//        return state.rotate(mirror.getRotation(state.get(FACING)));
-//    }
-//
-//    @Override
-//    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-//        builder.add(FACING, LIT);
-//    }
-
 }
